@@ -25,8 +25,10 @@
     "url": "git+https://github.com/sapphi-red/host-validation-middleware.git"
   },
   "keywords": [
-    "vite",
-    "vite-plugin"
+    "middleware",
+    "development",
+    "express",
+    "connect"
   ],
   "author": "sapphi-red (https://github.com/sapphi-red)",
   "license": "MIT",
