@@ -28,7 +28,7 @@ const app = connect()
 app.use(
   hostValidationMiddleware({
     // Values starting with `.` will allow all the subdomains under that domain
-    allowedHosts: ['example.com', '.mydomain.com'],
+    allowedHosts: Object.freeze(['example.com', '.mydomain.com']),
     // Optionally customize the error message:
     generateErrorMessage: hostname => `Access denied for host: ${hostname}`,
     // Optionally set the error response content type:
@@ -45,6 +45,8 @@ app.listen(3000, () => {
 })
 ```
 
+If the host header is not in the allowed hosts list, a 403 Forbidden response is sent.
+
 ### `isHostAllowed`
 
 You can also use the core host validation logic directly:
@@ -52,12 +54,14 @@ You can also use the core host validation logic directly:
 ```ts
 import { isHostAllowed } from 'host-validation-middleware'
 
-const allowedHosts = ['example.com', '.mydomain.com']
+const allowedHosts = Object.freeze(['example.com', '.mydomain.com'])
 
 console.log(isHostAllowed('example.com', allowedHosts)) // true
 console.log(isHostAllowed('sub.mydomain.com', allowedHosts)) // true
 console.log(isHostAllowed('evil.com', allowedHosts)) // false
 ```
+
+This function will cache the result if the `allowedHosts` array is frozen.
 
 ## Allowed Hosts
 
