@@ -30,7 +30,7 @@ app.use(
     // Values starting with `.` will allow all the subdomains under that domain
     allowedHosts: ['example.com', '.mydomain.com'],
     // Optionally customize the error message:
-    generateErrorMessage: (hostname) => `Access denied for host: ${hostname}`,
+    generateErrorMessage: hostname => `Access denied for host: ${hostname}`,
     // Optionally set the error response content type:
     errorResponseContentType: 'text/plain'
   })
