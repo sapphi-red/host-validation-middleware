@@ -73,3 +73,7 @@ Also the following hosts that cannot be used for DNS rebinding attacks are alway
 - Any `localhost` or subdomain of `localhost` (e.g., `localhost`, `foo.localhost`)
 - Any IPv4 or IPv6 address (e.g., `127.0.0.1`, `[::1]`)
 - Any host using the `file:` or browser extension protocol
+
+## Credits
+
+The API interface and the original implementation is based on [`webpack-dev-server`](https://github.com/webpack/webpack-dev-server)'s `allowedHosts` option.
