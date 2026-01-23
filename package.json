@@ -36,6 +36,10 @@
     "url": "https://github.com/sapphi-red/host-validation-middleware/issues"
   },
   "homepage": "https://github.com/sapphi-red/host-validation-middleware#readme",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/sapphi-red"
+  },
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.2",
     "@changesets/cli": "^2.29.8",
