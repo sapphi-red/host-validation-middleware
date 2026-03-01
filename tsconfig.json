@@ -16,7 +16,6 @@
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "noEmit": true,
-    "baseUrl": ".",
     "esModuleInterop": true,
     "skipLibCheck": true
   }

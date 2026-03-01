@@ -5,7 +5,7 @@ import type { IncomingMessage, ServerResponse } from 'node:http'
 import escapeHtml from 'escape-html'
 
 describe('hostValidationMiddleware', () => {
-  test('allow works', () => {
+  test('allow works', async () => {
     const middleware = hostValidationMiddleware({ allowedHosts: [] })
 
     const req = httpMocks.createRequest<IncomingMessage>({
@@ -13,11 +13,11 @@ describe('hostValidationMiddleware', () => {
     })
     const res = httpMocks.createResponse<ServerResponse>()
     const next = vi.fn()
-    middleware(req, res, next)
+    await middleware(req, res, next)
     expect(next).toHaveBeenCalled()
   })
 
-  test('disallow works', () => {
+  test('disallow works', async () => {
     const middleware = hostValidationMiddleware({ allowedHosts: [] })
 
     const req = httpMocks.createRequest<IncomingMessage>({
@@ -25,14 +25,14 @@ describe('hostValidationMiddleware', () => {
     })
     const res = httpMocks.createResponse<ServerResponse>()
     const next = vi.fn()
-    middleware(req, res, next)
+    await middleware(req, res, next)
     expect(res.statusCode).toBe(403)
     expect(res.getHeader('Content-Type')).toBe('text/plain')
     expect(res._getData()).toContain('Blocked request')
     expect(next).not.toHaveBeenCalled()
   })
 
-  test('error message customization options works', () => {
+  test('error message customization options works', async () => {
     const middleware = hostValidationMiddleware({
       allowedHosts: [],
       generateErrorMessage(hostname) {
@@ -46,7 +46,7 @@ describe('hostValidationMiddleware', () => {
     })
     const res = httpMocks.createResponse<ServerResponse>()
     const next = vi.fn()
-    middleware(req, res, next)
+    await middleware(req, res, next)
     expect(res.statusCode).toBe(403)
     expect(res.getHeader('Content-Type')).toBe('text/html')
     expect(res._getData()).toBe('<p>Custom error message: example.com</p>')
