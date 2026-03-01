@@ -2,14 +2,31 @@
   "name": "host-validation-middleware",
   "version": "0.1.2",
   "description": "Middleware for validating host headers in requests to protect against DNS rebinding attacks.",
-  "type": "module",
-  "exports": "./dist/index.js",
+  "keywords": [
+    "connect",
+    "development",
+    "express",
+    "middleware"
+  ],
+  "homepage": "https://github.com/sapphi-red/host-validation-middleware#readme",
+  "bugs": {
+    "url": "https://github.com/sapphi-red/host-validation-middleware/issues"
+  },
+  "license": "MIT",
+  "author": "sapphi-red (https://github.com/sapphi-red)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sapphi-red/host-validation-middleware.git"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/sapphi-red"
+  },
   "files": [
     "dist"
   ],
-  "engines": {
-    "node": "^18.0.0 || >=20.0.0"
-  },
+  "type": "module",
+  "exports": "./dist/index.js",
   "scripts": {
     "dev": "tsdown --watch",
     "build": "tsdown",
@@ -18,26 +35,6 @@
     "test": "vitest",
     "release:version": "changeset version && pnpm install --no-frozen-lockfile",
     "release:publish": "changeset publish"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sapphi-red/host-validation-middleware.git"
-  },
-  "keywords": [
-    "middleware",
-    "development",
-    "express",
-    "connect"
-  ],
-  "author": "sapphi-red (https://github.com/sapphi-red)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/sapphi-red/host-validation-middleware/issues"
-  },
-  "homepage": "https://github.com/sapphi-red/host-validation-middleware#readme",
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/sapphi-red"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.2",
@@ -52,6 +49,9 @@
     "tsdown": "^0.20.3",
     "typescript": "^5.9.3",
     "vitest": "^4.0.18"
+  },
+  "engines": {
+    "node": "^18.0.0 || >=20.0.0"
   },
   "packageManager": "pnpm@10.30.3"
 }

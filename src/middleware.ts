@@ -12,17 +12,16 @@ export function hostValidationMiddleware(options: MiddlewareOptions) {
   return async function hostValidationMiddleware(
     req: IncomingMessage,
     res: ServerResponse,
-    next: (err?: unknown) => void
+    next: (err?: unknown) => void,
   ) {
     const hostHeader = req.headers.host
     if (!isHostAllowed(hostHeader, options.allowedHosts)) {
       const hostname = hostHeader?.replace(/:\d+$/, '') ?? ''
       const errorMessage =
-        options.generateErrorMessage?.(hostname) ??
-        generateDefaultErrorMessage(hostname)
+        options.generateErrorMessage?.(hostname) ?? generateDefaultErrorMessage(hostname)
 
       res.writeHead(403, {
-        'Content-Type': options.errorResponseContentType ?? 'text/plain'
+        'Content-Type': options.errorResponseContentType ?? 'text/plain',
       })
       res.end(errorMessage)
       return
@@ -32,7 +31,5 @@ export function hostValidationMiddleware(options: MiddlewareOptions) {
 }
 
 function generateDefaultErrorMessage(hostname: string) {
-  return `Blocked request. This host (${JSON.stringify(
-    hostname
-  )}) is not allowed.`
+  return `Blocked request. This host (${JSON.stringify(hostname)}) is not allowed.`
 }

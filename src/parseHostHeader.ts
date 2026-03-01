@@ -21,15 +21,12 @@ export function extractHostNameFromHostHeader(hostHeader: string): Result {
     if (endIpv6 < 0) {
       return { type: 'invalid' }
     }
-    return net.isIP(trimmedHost.slice(1, endIpv6)) === 6
-      ? { type: 'ipv6' }
-      : { type: 'invalid' }
+    return net.isIP(trimmedHost.slice(1, endIpv6)) === 6 ? { type: 'ipv6' } : { type: 'invalid' }
   }
 
   // uri-host does not include ":" unless IPv6 address
   const colonPos = trimmedHost.indexOf(':')
-  const hostname =
-    colonPos === -1 ? trimmedHost : trimmedHost.slice(0, colonPos)
+  const hostname = colonPos === -1 ? trimmedHost : trimmedHost.slice(0, colonPos)
 
   if (net.isIP(hostname) === 4) {
     return { type: 'ipv4' }

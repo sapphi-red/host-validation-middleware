@@ -4,10 +4,7 @@ const isFileOrExtensionProtocolRE = /^(?:file|.+-extension):/i
 
 // Based on webpack-dev-server's `checkHeader` function: https://github.com/webpack/webpack-dev-server/blob/v5.2.0/lib/Server.js#L3086
 // https://github.com/webpack/webpack-dev-server/blob/v5.2.0/LICENSE
-function isHostAllowedInternal(
-  hostHeader: string,
-  allowedHosts: readonly string[]
-): boolean {
+function isHostAllowedInternal(hostHeader: string, allowedHosts: readonly string[]): boolean {
   if (isFileOrExtensionProtocolRE.test(hostHeader)) {
     return true
   }
@@ -60,7 +57,7 @@ const cache = new WeakMap<readonly string[], Set<string>>()
  */
 export function isHostAllowed(
   hostHeader: string | undefined,
-  allowedHosts: readonly string[]
+  allowedHosts: readonly string[],
 ): boolean {
   if (hostHeader === undefined) {
     return true

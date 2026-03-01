@@ -9,7 +9,7 @@ describe('hostValidationMiddleware', () => {
     const middleware = hostValidationMiddleware({ allowedHosts: [] })
 
     const req = httpMocks.createRequest<IncomingMessage>({
-      headers: { host: 'localhost' }
+      headers: { host: 'localhost' },
     })
     const res = httpMocks.createResponse<ServerResponse>()
     const next = vi.fn()
@@ -21,7 +21,7 @@ describe('hostValidationMiddleware', () => {
     const middleware = hostValidationMiddleware({ allowedHosts: [] })
 
     const req = httpMocks.createRequest<IncomingMessage>({
-      headers: { host: 'example.com' }
+      headers: { host: 'example.com' },
     })
     const res = httpMocks.createResponse<ServerResponse>()
     const next = vi.fn()
@@ -38,11 +38,11 @@ describe('hostValidationMiddleware', () => {
       generateErrorMessage(hostname) {
         return `<p>Custom error message: ${escapeHtml(hostname)}</p>`
       },
-      errorResponseContentType: 'text/html'
+      errorResponseContentType: 'text/html',
     })
 
     const req = httpMocks.createRequest<IncomingMessage>({
-      headers: { host: 'example.com:8080' }
+      headers: { host: 'example.com:8080' },
     })
     const res = httpMocks.createResponse<ServerResponse>()
     const next = vi.fn()
