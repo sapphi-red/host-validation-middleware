@@ -1,5 +1,11 @@
 # host-validation-middleware
 
+## 0.1.3
+
+### Patch Changes
+
+- [`11ee57e`](https://github.com/sapphi-red/host-validation-middleware/commit/11ee57e94e90a1aa7ef320b62d1c31d2892faaaf) Thanks [@sapphi-red](https://github.com/sapphi-red)! - Maintenance release
+
 ## 0.1.2
 
 ### Patch Changes
