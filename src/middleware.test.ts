@@ -4,6 +4,8 @@ import httpMocks from 'node-mocks-http'
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import escapeHtml from 'escape-html'
 
+type NextFunction = (err?: unknown) => void
+
 describe('hostValidationMiddleware', () => {
   test('allow works', async () => {
     const middleware = hostValidationMiddleware({ allowedHosts: [] })
@@ -12,7 +14,7 @@ describe('hostValidationMiddleware', () => {
       headers: { host: 'localhost' },
     })
     const res = httpMocks.createResponse<ServerResponse>()
-    const next = vi.fn()
+    const next = vi.fn<NextFunction>()
     await middleware(req, res, next)
     expect(next).toHaveBeenCalled()
   })
@@ -24,7 +26,7 @@ describe('hostValidationMiddleware', () => {
       headers: { host: 'example.com' },
     })
     const res = httpMocks.createResponse<ServerResponse>()
-    const next = vi.fn()
+    const next = vi.fn<NextFunction>()
     await middleware(req, res, next)
     expect(res.statusCode).toBe(403)
     expect(res.getHeader('Content-Type')).toBe('text/plain')
@@ -45,7 +47,7 @@ describe('hostValidationMiddleware', () => {
       headers: { host: 'example.com:8080' },
     })
     const res = httpMocks.createResponse<ServerResponse>()
-    const next = vi.fn()
+    const next = vi.fn<NextFunction>()
     await middleware(req, res, next)
     expect(res.statusCode).toBe(403)
     expect(res.getHeader('Content-Type')).toBe('text/html')
