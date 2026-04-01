@@ -3,6 +3,7 @@
     "module": "ESNext",
     "target": "ES2023",
     "lib": ["ES2023"],
+    "types": ["node"],
     "declaration": true,
     "sourceMap": true,
     "rootDir": ".",
