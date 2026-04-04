@@ -1,5 +1,11 @@
 # host-validation-middleware
 
+## 0.1.4
+
+### Patch Changes
+
+- [`588362d`](https://github.com/sapphi-red/host-validation-middleware/commit/588362d842624ef7462dfb8c846fdc1625d1e76b) Thanks [@sapphi-red](https://github.com/sapphi-red)! - Correct script build output path so that `exports` field points to a correct file
+
 ## 0.1.3
 
 ### Patch Changes
