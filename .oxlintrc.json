@@ -11,5 +11,13 @@
     "vitest/valid-expect": "off",
     "no-shadow": "off"
   },
-  "ignorePatterns": ["dist"]
+  "ignorePatterns": ["dist"],
+  "overrides": [
+    {
+      "files": ["*.test.ts"],
+      "rules": {
+        "no-underscore-dangle": "off"
+      }
+    }
+  ]
 }
