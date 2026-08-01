@@ -1,5 +1,2 @@
 minimumReleaseAgeExclude:
   - '@napi-rs/wasm-runtime@1.2.2'
-
-allowBuilds:
-  esbuild: true
